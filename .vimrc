@@ -32,6 +32,9 @@ Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 " Clojure Parinfer
 Plug 'bhurlow/vim-parinfer', { 'for': 'clojure' }
 
+" Node awesomeness
+Plug 'moll/vim-node', { 'for': 'javascript' }
+
 " NERD tree will be loaded on the first invocation of NERDTreeToggle command
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 
@@ -41,6 +44,9 @@ Plug 'tpope/vim-sensible'
 " Themes
 Plug 'joshdick/onedark.vim'
 Plug 'tyrannicaltoucan/vim-quantum'
+
+" Git Gutter
+Plug 'airblade/vim-gitgutter'
 
 call plug#end()
 
@@ -63,6 +69,9 @@ endif
 
 " Show the preview window at the bottom
 set splitbelow
+
+" Show relative numbering by default
+set relativenumber
 
 " No beeps
 set noeb vb t_vb=
