@@ -35,6 +35,9 @@ Plug 'bhurlow/vim-parinfer', { 'for': 'clojure' }
 " Node awesomeness
 Plug 'moll/vim-node', { 'for': 'javascript' }
 
+" Asynchronous build and test dispatching
+Plug 'tpope/vim-dispatch'
+
 " NERD tree will be loaded on the first invocation of NERDTreeToggle command
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 
@@ -133,8 +136,8 @@ set noeb vb t_vb=
   nnoremap <leader>gm :Gmove<Space>
   nnoremap <leader>gb :Git branch<Space>
   nnoremap <leader>go :Git checkout<Space>
-  nnoremap <leader>gps :Dispatch! git push<CR>
-  nnoremap <leader>gpl :Dispatch! git pull<CR>
+  nnoremap <leader>gps :Gpush<CR>
+  nnoremap <leader>gpl :Gpull<CR>
 " }}}
 
 " {{{ Git Gutter
