@@ -5,6 +5,9 @@ call plug#begin('~/.vim/plugged')
 " Awesome Git Support
 Plug 'tpope/vim-fugitive'
 
+" Git in NERDTree
+Plug 'Xuyuanp/nerdtree-git-plugin'
+
 " Syntax Checking
 Plug 'scrooloose/syntastic'
 
@@ -32,8 +35,30 @@ Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 " Clojure Parinfer
 Plug 'bhurlow/vim-parinfer', { 'for': 'clojure' }
 
+" Clojure Syntax improved
+Plug 'guns/vim-clojure-static', { 'for': 'clojure' }
+
+" Even more improved
+Plug 'guns/vim-clojure-highlight', { 'for': 'clojure' }
+
+" Syntax Checking for Clojure
+Plug 'venantius/vim-eastwood', { 'for': 'clojure' }
+
+" Format clojure code
+Plug 'venantius/vim-cljfmt', { 'for': 'clojure' }
+
+" Leiningen static support
+Plug 'tpope/vim-salve', { 'for': 'clojure' }
+Plug 'tpope/vim-projectionist', { 'for': 'clojure' }
+
 " Node awesomeness
 Plug 'moll/vim-node', { 'for': 'javascript' }
+
+" JS indentation
+Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
+
+" Enhanced js syntax
+Plug 'jelera/vim-javascript-syntax', { 'for': 'javascript' }
 
 " Asynchronous build and test dispatching
 Plug 'tpope/vim-dispatch'
@@ -51,13 +76,16 @@ Plug 'tyrannicaltoucan/vim-quantum'
 " Git Gutter
 Plug 'airblade/vim-gitgutter'
 
+" Minimap
+Plug 'severin-lemaignan/vim-minimap'
+
 call plug#end()
 
 syntax on
 filetype plugin indent on
 
-set guifont=Hack:h11
-
+set guifont=Anonymice\ Powerline:h18
+set antialias
 " Theme 
 
 set background=dark
@@ -75,6 +103,20 @@ set splitbelow
 
 " Show relative numbering by default
 set relativenumber
+set number
+
+" Folding
+set foldmethod=indent
+set foldlevelstart=99
+
+set colorcolumn=80
+set cursorline
+" Press space to toggle the current fold, if the cursor is not in a fold
+" then move to the right.
+nnoremap <Space> za
+nnoremap <S-Space> zA
+vnoremap <Space> za
+vnoremap <S-Space> zA
 
 " No beeps
 set noeb vb t_vb=
@@ -120,6 +162,7 @@ set noeb vb t_vb=
 " {{{ YouCompleteMe
   " autoclose preview window after selecting a completion
   let g:ycm_autoclose_preview_window_after_completion = 1
+	let g:ycm_add_preview_to_completeopt = 1
 " }}}
 
 " {{{ Fugitive
@@ -131,7 +174,7 @@ set noeb vb t_vb=
   nnoremap <leader>ge :Gedit<CR>
   nnoremap <leader>gr :Gread<CR>
   nnoremap <leader>gw :Gwrite<CR><CR>
-  nnoremap <leader>gl :silent! Glog<CR>:bot copen<CR>
+  nnoremap <leader>gl :Glog<CR>
   nnoremap <leader>gp :Ggrep<Space>
   nnoremap <leader>gm :Gmove<Space>
   nnoremap <leader>gb :Git branch<Space>
@@ -142,4 +185,15 @@ set noeb vb t_vb=
 
 " {{{ Git Gutter
   nnoremap <leader>gga :GitGutterStage<CR>
+" }}}
+
+" {{[ Syntastic
+  set statusline+=%#warningmsg#
+  set statusline+=%{SyntasticStatuslineFlag()}
+  set statusline+=%*
+
+  let g:syntastic_always_populate_loc_list = 1
+  let g:syntastic_auto_loc_list = 1
+  let g:syntastic_check_on_open = 1
+  let g:syntastic_check_on_wq = 0
 " }}}
