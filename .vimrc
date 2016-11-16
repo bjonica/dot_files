@@ -51,6 +51,10 @@ Plug 'venantius/vim-cljfmt', { 'for': 'clojure' }
 Plug 'tpope/vim-salve', { 'for': 'clojure' }
 Plug 'tpope/vim-projectionist', { 'for': 'clojure' }
 
+" vim so sexp
+Plug 'guns/vim-sexp', { 'for': 'clojure' }
+Plug 'tpope/vim-sexp-mappings-for-regular-people', { 'for': 'clojure' }
+
 " Node awesomeness
 Plug 'moll/vim-node', { 'for': 'javascript' }
 
@@ -78,6 +82,9 @@ Plug 'airblade/vim-gitgutter'
 
 " Minimap
 Plug 'severin-lemaignan/vim-minimap'
+
+" awesome fuzzy search
+Plug 'ctrlpvim/ctrlp.vim'
 
 call plug#end()
 
@@ -111,6 +118,11 @@ set foldlevelstart=99
 
 set colorcolumn=80
 set cursorline
+
+" case insensitive search
+set ignorecase
+set smartcase
+
 " Press space to toggle the current fold, if the cursor is not in a fold
 " then move to the right.
 nnoremap <Space> za
@@ -146,6 +158,11 @@ set noeb vb t_vb=
   nnoremap <leader>ev :vsp $MYVIMRC<CR>
   nnoremap <leader>eb :vsp ~/.bash_profile<CR>
   nnoremap <leader>sv :source $MYVIMRC<CR>
+" }}}
+
+" {{{ Commentary
+  vnoremap <leader>// :Commentary<CR>
+  nnoremap <leader>// :Commentary<CR>
 " }}}
 
 " {{{ NERDTree Specific
